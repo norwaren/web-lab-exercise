@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 1 - The HTML5 Canvas</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+    }
+
+    canvas {
+      display: block;
+      width: 880px;
+      height: 880px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="smileyCanvas" width="880" height="880">
+    Your browser does not support HTML5 Canvas.
+  </canvas>
+
+  <script>
+    const canvas = document.getElementById("smileyCanvas");
+    const ctx = canvas.getContext("2d");
+
+    /*
+     * 1. Draw the green background
+     */
+    ctx.fillStyle = "#A3E593";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    /*
+     * 2. Draw the large yellow face
+     */
+    ctx.beginPath();
+    ctx.arc(440, 440, 350, 0, Math.PI * 2);
+
+    ctx.fillStyle = "#FFFF4D";
+    ctx.fill();
+
+    ctx.strokeStyle = "#666633";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    /*
+     * 3. Draw the left eye
+     */
+    ctx.beginPath();
+    ctx.arc(302, 355, 26, 0, Math.PI * 2);
+
+    ctx.fillStyle = "#000000";
+    ctx.fill();
+
+    /*
+     * 4. Draw the right eye
+     */
+    ctx.beginPath();
+    ctx.arc(583, 355, 26, 0, Math.PI * 2);
+    ctx.fill();
+
+    /*
+     * 5. Draw the nose
+     */
+    ctx.beginPath();
+    ctx.moveTo(442, 443);
+    ctx.lineTo(442, 530);
+
+    ctx.strokeStyle = "#8A812B";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    /*
+     * 6. Draw the smile
+     */
+    ctx.beginPath();
+
+    // This arc creates the lower half of the smile.
+    ctx.arc(
+      443,
+      539,
+      125,
+      0.3,
+      Math.PI - 0.3
+    );
+
+    ctx.strokeStyle = "#777733";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    /*
+     * 7. Draw the text at the bottom
+     */
+    ctx.font = "bold 54px Arial";
+    ctx.fillStyle = "#27752B";
+    ctx.textAlign = "left";
+    ctx.fillText(
+      "The Canvas brought me to life!",
+      58,
+      862
+    );
+  </script>
+</body>
+</html>
